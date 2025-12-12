@@ -29,16 +29,10 @@ Estructuras: Listas, Diccionarios y lógica de bucles anidados.
 🚀 Cómo ejecutarlo
 Clona este repositorio:
 
-Bash
-
 git clone https://github.com/Anggel26/faststock-cli.git
 Navega a la carpeta del proyecto:
 
-Bash
-
 cd faststock-cli
 Ejecuta la aplicación:
-
-Bash
 
 python main.py
