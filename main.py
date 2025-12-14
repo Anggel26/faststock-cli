@@ -1,111 +1,140 @@
-#Bienvenida al programa.
+"""FastStock CLI - Gestor de inventario y ventas.
+
+Refactorizaciones principales:
+- Encapsulado de entradas numéricas con validación.
+- Funciones para registrar, listar, actualizar y vender productos.
+- Búsqueda reutilizable de productos por nombre.
+"""
+
 print("Bienvenido a FastStock CLI (Gestor de Inventario y Ventas)")
 
-#Lista de diccionarios de productos
 inventario = []
 
-#Ciclo para repetir el menú y recibir opciones
-salir = False
-while not salir:
 
-    #Menú de opciones
-    print("Menú principal.")
-    print("1. Registrar nuevos productos.")
-    print("2. Listar inventario.")
-    print("3. Actualizar stock.")
-    print("4. Simular venta.")
-    print("5. Reporte de stock bajo.")
-    print("6. Salir.")
+def input_int(prompt, min_value=None):
+    while True:
+        try:
+            v = int(input(prompt))
+            if min_value is not None and v < min_value:
+                print(f"Ingrese un número mayor o igual a {min_value}.")
+                continue
+            return v
+        except ValueError:
+            print("Entrada no válida. Ingrese un número entero.")
 
-    opcion = input("Por favor, digite la opción que desea: ")
 
-    #Estructuras condicionales para cada opción del menú
+def input_float(prompt, min_value=None):
+    while True:
+        try:
+            v = float(input(prompt))
+            if min_value is not None and v < min_value:
+                print(f"Ingrese un número mayor o igual a {min_value}.")
+                continue
+            return v
+        except ValueError:
+            print("Entrada no válida. Ingrese un número (por ejemplo 12.50).")
 
-    if opcion == "1": #Registrar producto
-        aux = False
-        while not aux:
-            print("Registro de producto.")
-            nombre = input("Nombre del producto: ")
-            precio = float(input("Precio: "))
-            cantidad = int(input("Cantidad inicial: "))
 
-            #Guardamos la información en un diccionario
-            producto = {
-                "nombre" : nombre,
-                "precio" : precio,
-                "stock" : cantidad
-            }
+def mostrar_menu():
+    print("\nMenú principal:")
+    print("1. Registrar nuevos productos")
+    print("2. Listar inventario")
+    print("3. Actualizar stock")
+    print("4. Simular venta")
+    print("5. Reporte de stock bajo")
+    print("6. Salir")
 
-            #Agregando el diccionario a la lista
-            inventario.append(producto)
-            print(f"{nombre} añadido al inventario.")
 
-            respuesta = input("\n¿Desea registrar otro producto? (s/n): ")
-            if respuesta != "s":
-                aux = True
+def registrar_producto(inventario):
+    print("\nRegistro de producto.")
+    while True:
+        nombre = input("Nombre del producto: ").strip()
+        precio = input_float("Precio: ", min_value=0)
+        cantidad = input_int("Cantidad inicial: ", min_value=0)
 
-    elif opcion == "2": #Listar inventario
-        print("\nInventario actual.")
-        if len(inventario) == 0:
-            print("El inventario está vacío.")
-        else:
-            for p in inventario:
-                print(f"Producto: {p['nombre']} | Precio: ${p['precio']} | Stock: {p['stock']}")
+        producto = {"nombre": nombre, "precio": precio, "stock": cantidad}
+        inventario.append(producto)
+        print(f"{nombre} añadido al inventario.")
 
-    elif opcion == "3": # Actualizar stock
-        encontrado = False
-        while not encontrado:
-            buscar = input("Nombre del producto a actualizar (escribe 'salir' para volver): ")
-            
-            if buscar.lower() == "salir":
-                break # Sale del bucle sin actualizar nada
-            
-            for p in inventario:
-                if p["nombre"].lower() == buscar.lower():
-                    nueva_cantidad = int(input(f"Cantidad a sumar al stock de {p['nombre']}: "))
-                    p["stock"] += nueva_cantidad
-                    print("Stock actualizado.")
-                    encontrado = True # Finaliza el bucle while
-                    break # Sale del for
-            
-            if not encontrado:
-                print("Producto no encontrado, intentelo de nuevo.")
+        if input("¿Desea registrar otro producto? (s/n): ").lower() != "s":
+            break
 
-    elif opcion == "4": # Simular venta
-        encontrado = False
-        while not encontrado:
-            buscar = input("Producto que desea vender (escribe 'salir' para volver): ")
-            
-            if buscar.lower() == "salir":
-                break # Sale del bucle sin vender nada
-            
-            for p in inventario:
-                if p["nombre"].lower() == buscar.lower():
-                    cantidad_venta = int(input(f"Cantidad a vender de {p['nombre']}: "))
-                    if cantidad_venta <= p["stock"]:
-                        p["stock"] -= cantidad_venta
-                        total = cantidad_venta * p["precio"]
-                        print(f"Venta realizada. Total: ${total}")
-                        encontrado = True # Finaliza el bucle while
-                    else:
-                        print("No hay suficiente stock")
-                    break # Sale del for
-            
-            if not encontrado:
-                print("Producto no encontrado, intentelo de nuevo.")
 
-    elif opcion == "5": #Reporte de stock bajo.
-        stock_bajo = []
+def listar_inventario(inventario):
+    print("\nInventario actual:")
+    if not inventario:
+        print("El inventario está vacío.")
+        return
+    for p in inventario:
+        print(f"Producto: {p['nombre']} | Precio: ${p['precio']} | Stock: {p['stock']}")
+
+
+def seleccionar_producto(inventario, prompt):
+    """Pide por nombre hasta encontrar un producto o el usuario escriba 'salir'.
+    Devuelve el diccionario del producto o None si el usuario cancela."""
+    while True:
+        buscar = input(prompt).strip()
+        if buscar.lower() == "salir":
+            return None
         for p in inventario:
-            if p["stock"] < 5:
-                stock_bajo.append(p)
-        if len(stock_bajo) <= 0:
-            print("No hay productos con stock bajo.")
+            if p["nombre"].lower() == buscar.lower():
+                return p
+        print("Producto no encontrado, inténtelo de nuevo o escriba 'salir'.")
+
+
+def actualizar_stock(inventario):
+    p = seleccionar_producto(inventario, "Nombre del producto a actualizar (escribe 'salir' para volver): ")
+    if not p:
+        return
+    sumar = input_int(f"Cantidad a sumar al stock de {p['nombre']}: ", min_value=0)
+    p["stock"] += sumar
+    print("Stock actualizado.")
+
+
+def simular_venta(inventario):
+    p = seleccionar_producto(inventario, "Producto que desea vender (escribe 'salir' para volver): ")
+    if not p:
+        return
+    while True:
+        cantidad = input_int(f"Cantidad a vender de {p['nombre']}: ", min_value=0)
+        if cantidad <= p["stock"]:
+            p["stock"] -= cantidad
+            total = cantidad * p["precio"]
+            print(f"Venta realizada. Total: ${total}")
+            return
+        print("No hay suficiente stock. Intente con una cantidad menor.")
+
+
+def reporte_stock_bajo(inventario, umbral=5):
+    bajos = [p for p in inventario if p["stock"] < umbral]
+    if not bajos:
+        print("No hay productos con stock bajo.")
+        return
+    print("Productos con stock bajo:")
+    for p in bajos:
+        print(f"Producto: {p['nombre']} | reporta {p['stock']} unidades.")
+
+
+def main():
+    while True:
+        mostrar_menu()
+        opcion = input("Por favor, digite la opción que desea: ").strip()
+        if opcion == "1":
+            registrar_producto(inventario)
+        elif opcion == "2":
+            listar_inventario(inventario)
+        elif opcion == "3":
+            actualizar_stock(inventario)
+        elif opcion == "4":
+            simular_venta(inventario)
+        elif opcion == "5":
+            reporte_stock_bajo(inventario)
+        elif opcion == "6":
+            print("Saliendo...")
+            break
         else:
-            print(f"Producto: {p['nombre']} | reporta {p['stock']} unidades.")
+            print("Opción incorrecta, inténtelo de nuevo.")
 
-    elif opcion == "6": #Salir.
-        salir = True
 
-    else: #Validación extra.
-        print("Opción incorrecta, inténtelo de nuevo.")
+if __name__ == "__main__":
+    main()
