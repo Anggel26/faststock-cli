@@ -1,38 +1,58 @@
-FastStock CLI - Gestor de Inventario 🚀
-FastStock CLI es una aplicación de consola desarrollada en Python diseñada para ayudar a pequeños comercios a gestionar sus productos, controlar el stock y simular ventas de manera ágil y eficiente.
+# FastStock CLI - Gestor de Inventario 🚀
 
-Este proyecto nace de la necesidad de aplicar mis conocimientos técnicos en un entorno real y funcional. Mi objetivo es construir una herramienta robusta que sirva como base sólida para mi portafolio profesional, demostrando capacidad para resolver problemas lógicos y de gestión de datos.
+**FastStock CLI** es una aplicación de consola desarrollada en Python diseñada para facilitar a los pequeños comercios la gestión de sus productos, el control de stock y la simulación de ventas de manera ágil.
 
-📈 Evolución y Mejora Continua
-Este repositorio es un "proyecto vivo". Refleja mi proceso de aprendizaje constante y mi compromiso con la calidad del código:
+Este proyecto surge para aplicar conocimientos técnicos en un entorno funcional, construyendo una herramienta robusta que demuestra capacidad en la resolución de problemas lógicos y gestión de datos.
 
-Fase 1 (Actual): Implementación de la lógica central, manejo de estructuras de datos dinámicas (listas y diccionarios) y control de flujo.
+---
 
-Fase 2 (Próximamente): Modularización del código mediante funciones y optimización del manejo de errores para una experiencia de usuario más fluida.
+## 📈 Evolución y Mejora Continua
+Este repositorio es un "proyecto vivo". Actualmente, el desarrollo se encuentra en la **Fase 2**, enfocada en la robustez y profesionalización del código.
 
-Fase 3 (Futuro): Integración de persistencia de datos y principios de Programación Orientada a Objetos (POO) para escalar la aplicación.
+* ✅ **Fase 1:** Implementación de la lógica central y estructuras de datos dinámicas.
+* 🚀 **Fase 2 (Actual):** **Modularización y Validación.** Refactorización mediante funciones independientes, control de flujo profesional con `if __name__ == "__main__":` y gestión de errores con `try-except`.
+* ⏳ **Fase 3 (Próximamente):** Integración de persistencia de datos (guardado en archivos) y principios de Programación Orientada a Objetos (POO).
 
-✨ Características actuales
-📦 Registro Dinámico: Alta de productos con validación de datos básicos.
+---
 
-📋 Control de Inventario: Visualización clara y organizada de las existencias.
+## ✨ Características de la Fase 2
+- 📦 **Registro Validado:** Entrada de productos con protección contra datos nulos o tipos incorrectos (validación de números).
+- 📋 **Inventario en Tiempo Real:** Visualización clara del estado actual de todos los productos.
+- 🔄 **Actualización de Stock:** Sistema de búsqueda de productos por nombre para modificar existencias.
+- 💰 **Simulador de Ventas:** Proceso automatizado que descuenta stock y calcula el total de la transacción.
+- ⚠️ **Reporte de Stock Bajo:** Alertas automáticas para productos con existencias críticas (menos de 5 unidades).
 
-💰 Simulador de Ventas: Cálculo automático de totales y actualización de stock en tiempo real.
+---
 
-⚠️ Gestión de Alertas: Sistema de detección de stock bajo para reabastecimiento preventivo.
+## 🛠️ Tecnologías Utilizadas
+- **Lenguaje:** Python 3.x
+- **Lógica:** Funciones modulares, manejo de excepciones, listas de diccionarios y tipos de datos primitivos.
 
-🛠️ Tecnologías utilizadas
-Lenguaje: Python 3.x
+---
 
-Estructuras: Listas, Diccionarios y lógica de bucles anidados.
+## 🚀 Guía de Instalación y Ejecución
 
-🚀 Cómo ejecutarlo
-Clona este repositorio:
+Para ejecutar este proyecto en tu computadora, sigue estos pasos:
 
+### 1. Requisitos Previos
+Asegúrate de tener instalado **Python 3.10** o superior. 
+- Puedes descargarlo en [python.org](https://www.python.org/).
+- Verifica tu instalación abriendo una terminal y escribiendo: `python --version`
+
+### 2. Obtención del Proyecto
+
+Copia y pega estos comandos en tu terminal:
+
+```bash
+# 1. Clonar el repositorio desde GitHub
 git clone https://github.com/Anggel26/faststock-cli.git
-Navega a la carpeta del proyecto:
 
+# 2. Entrar a la carpeta del proyecto
 cd faststock-cli
-Ejecuta la aplicación:
 
+# 3. Ejecutar la aplicación
+# En Windows:
 python main.py
+
+# En macOS o Linux:
+python3 main.py
