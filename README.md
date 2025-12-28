@@ -12,6 +12,10 @@ Este repositorio es un "proyecto vivo". Actualmente, acabamos de implementar la 
 * ✅ **Fase 1:** Implementación lógica básica y estructuras de datos.
 * ✅ **Fase 2:** Modularización, validación de entradas y manejo de errores.
 * 🚀 **Fase 3 (Actual):** **Programación Orientada a Objetos (POO).** Migración de diccionarios a clases robustas (**Producto**), uso de métodos mágicos (**__str__**) encapsulamiento, y optimización con funciones lambda.
+* ⏳ **Fase 4 (Próximamente):** **Persistencia de Datos y Auditoría.** Integración de conocimientos del Módulo 4:
+    * **Persistencia de Datos (File I/O):** Implementación de flujos de archivos (lectura y escritura) para asegurar que el inventario y las ventas se guarden en disco y no se pierdan al cerrar el programa.
+    * **Interacción con el Sistema (Módulo os):** Gestión inteligente de rutas y verificación de existencia de archivos para asegurar compatibilidad entre sistemas operativos.
+    * **Registro Temporal (datetime):** Generación de marcas de tiempo (timestamps) para registrar el momento exacto de cada operación en el historial.
 
 ---
 
