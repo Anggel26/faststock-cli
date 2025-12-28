@@ -2,31 +2,30 @@
 
 **FastStock CLI** es una aplicación de consola desarrollada en Python diseñada para facilitar a los pequeños comercios la gestión de sus productos, el control de stock y la simulación de ventas de manera ágil.
 
-Este proyecto surge para aplicar conocimientos técnicos en un entorno funcional, construyendo una herramienta robusta que demuestra capacidad en la resolución de problemas lógicos y gestión de datos.
+Este proyecto surge para mejorar mis habilidades como desarrollador, transformando scripts básicos en software estructurado y profesional.
 
 ---
 
 ## 📈 Evolución y Mejora Continua
-Este repositorio es un "proyecto vivo". Actualmente, el desarrollo se encuentra en la **Fase 2**, enfocada en la robustez y profesionalización del código.
+Este repositorio es un "proyecto vivo". Actualmente, acabamos de implementar la **Fase 3**, introduciendo paradigmas de diseño profesional.
 
-* ✅ **Fase 1:** Implementación de la lógica central y estructuras de datos dinámicas.
-* 🚀 **Fase 2 (Actual):** **Modularización y Validación.** Refactorización mediante funciones independientes, control de flujo profesional con `if __name__ == "__main__":` y gestión de errores con `try-except`.
-* ⏳ **Fase 3 (Próximamente):** Integración de persistencia de datos (guardado en archivos) y principios de Programación Orientada a Objetos (POO).
+* ✅ **Fase 1:** Implementación lógica básica y estructuras de datos.
+* ✅ **Fase 2:** Modularización, validación de entradas y manejo de errores.
+* 🚀 **Fase 3 (Actual):** **Programación Orientada a Objetos (POO).** Migración de diccionarios a clases robustas (**Producto**), uso de métodos mágicos (**__str__**) encapsulamiento, y optimización con funciones lambda.
 
 ---
 
-## ✨ Características de la Fase 2
-- 📦 **Registro Validado:** Entrada de productos con protección contra datos nulos o tipos incorrectos (validación de números).
-- 📋 **Inventario en Tiempo Real:** Visualización clara del estado actual de todos los productos.
-- 🔄 **Actualización de Stock:** Sistema de búsqueda de productos por nombre para modificar existencias.
-- 💰 **Simulador de Ventas:** Proceso automatizado que descuenta stock y calcula el total de la transacción.
-- ⚠️ **Reporte de Stock Bajo:** Alertas automáticas para productos con existencias críticas (menos de 5 unidades).
+## ✨ Características Nuevas (Versión 2.0)
+- 🧠 **Arquitectura POO:** El sistema ahora maneja objetos **Producto** reales en lugar de diccionarios dispersos, lo que reduce errores y mejora la legibilidad.
+- 🔍 **Búsquedas Inteligentes:** Lógica de búsqueda encapsulada y reutilizable para ventas y actualizaciones.
+- 📊 **Reportes Avanzados:** Uso de **Programación Funcional** (`filter` + `lambda`) para generar reportes de stock bajo eficientes y limpios.
+- 🛡️ **Validación Robusta:** Helpers dedicados (**input_int**, **input_float**) que garantizan que los datos numéricos sean siempre correctos.
 
 ---
 
 ## 🛠️ Tecnologías Utilizadas
 - **Lenguaje:** Python 3.x
-- **Lógica:** Funciones modulares, manejo de excepciones, listas de diccionarios y tipos de datos primitivos.
+- **Lógica:** POO (Clases, Métodos, Instancias), Lambdas, Manejo de Excepciones y Listas de Objetos.
 
 ---
 
@@ -56,3 +55,4 @@ python main.py
 
 # En macOS o Linux:
 python3 main.py
+```
