@@ -7,29 +7,35 @@ Este proyecto surge para mejorar mis habilidades como desarrollador, transforman
 ---
 
 ## 📈 Evolución y Mejora Continua
-Este repositorio es un "proyecto vivo". Actualmente, acabamos de implementar la **Fase 3**, introduciendo paradigmas de diseño profesional.
+Este repositorio es un "proyecto vivo". Actualmente, acabamos de implementar la **Fase 4**, migrando a una **Arquitectura en Capas**.
 
 * ✅ **Fase 1:** Implementación lógica básica y estructuras de datos.
 * ✅ **Fase 2:** Modularización, validación de entradas y manejo de errores.
-* 🚀 **Fase 3 (Actual):** **Programación Orientada a Objetos (POO).** Migración de diccionarios a clases robustas (**Producto**), uso de métodos mágicos (**__str__**) encapsulamiento, y optimización con funciones lambda.
-* ⏳ **Fase 4 (Próximamente):** **Persistencia de Datos y Auditoría.** Integración de conocimientos del Módulo 4:
-    * **Persistencia de Datos (File I/O):** Implementación de flujos de archivos (lectura y escritura) para asegurar que el inventario y las ventas se guarden en disco y no se pierdan al cerrar el programa.
-    * **Interacción con el Sistema (Módulo os):** Gestión inteligente de rutas y verificación de existencia de archivos para asegurar compatibilidad entre sistemas operativos.
-    * **Registro Temporal (datetime):** Generación de marcas de tiempo (timestamps) para registrar el momento exacto de cada operación en el historial.
+* ✅ **Fase 3:** **Programación Orientada a Objetos (POO).** Clases `Producto`, encapsulamiento y uso de `lambda`.
+* 🚀 **Fase 4 (Actual):** **Arquitectura en Capas y Persistencia.** Refactorización del código monolítico a una estructura escalable:
+    * **Modelos:** Definición de datos (`app/models`).
+    * **Repositorios:** Capa de acceso a datos y persistencia en archivo (`app/repositories`).
+    * **Servicios:** Lógica de negocio (`app/services`).
+    * **UI:** Interfaz de consola separada de la lógica (`app/ui`).
+* ⏳ **Fase 5 (Próximamente):** **Reportes Avanzados y Análisis de Datos.**
+    * **Historial de Ventas:** Registro detallado de cada movimiento y venta.
+    * **Reportes Temporales:** Generación de reportes de ventas por mes, semana o día.
+    * **Análisis de Ganancias:** Cálculo de márgenes y beneficios en periodos determinados.
+    * **Exportación de Datos:** Capacidad de exportar reportes a TXT.
 
 ---
 
-## ✨ Características Nuevas (Versión 2.0)
-- 🧠 **Arquitectura POO:** El sistema ahora maneja objetos **Producto** reales en lugar de diccionarios dispersos, lo que reduce errores y mejora la legibilidad.
-- 🔍 **Búsquedas Inteligentes:** Lógica de búsqueda encapsulada y reutilizable para ventas y actualizaciones.
-- 📊 **Reportes Avanzados:** Uso de **Programación Funcional** (`filter` + `lambda`) para generar reportes de stock bajo eficientes y limpios.
-- 🛡️ **Validación Robusta:** Helpers dedicados (**input_int**, **input_float**) que garantizan que los datos numéricos sean siempre correctos.
+## ✨ Características Nuevas (Versión 3.0 - Layered Architecture)
+- 🏗️ **Diseño Modular:** Separación clara de responsabilidades lo que facilita el mantenimiento y escalabilidad.
+- � **Persistencia Automática:** Los datos se guardan y cargan automáticamente al iniciar la aplicación.
+- 🛡️ **Validación Robusta:** Sistema centralizado de validación de entradas.
 
 ---
 
 ## 🛠️ Tecnologías Utilizadas
 - **Lenguaje:** Python 3.x
-- **Lógica:** POO (Clases, Métodos, Instancias), Lambdas, Manejo de Excepciones y Listas de Objetos.
+- **Arquitectura:** MVC / Layered (Models, Repositories, Services, UI)
+- **Persistencia:** File System (TXT/CSV based structures)
 
 ---
 
