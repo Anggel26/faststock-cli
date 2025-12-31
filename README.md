@@ -21,13 +21,13 @@ Este repositorio es un "proyecto vivo". Actualmente, acabamos de implementar la 
     * **Historial de Ventas:** Registro detallado de cada movimiento y venta.
     * **Reportes Temporales:** Generación de reportes de ventas por mes, semana o día.
     * **Análisis de Ganancias:** Cálculo de márgenes y beneficios en periodos determinados.
-    * **Exportación de Datos:** Capacidad de exportar reportes a TXT.
+    * **Exportación de Datos:** Capacidad de exportar reportes a CSV o JSON.
 
 ---
 
 ## ✨ Características Nuevas (Versión 3.0 - Layered Architecture)
 - 🏗️ **Diseño Modular:** Separación clara de responsabilidades lo que facilita el mantenimiento y escalabilidad.
-- � **Persistencia Automática:** Los datos se guardan y cargan automáticamente al iniciar la aplicación.
+- 💾 **Persistencia Automática:** Los datos se guardan y cargan automáticamente al iniciar la aplicación.
 - 🛡️ **Validación Robusta:** Sistema centralizado de validación de entradas.
 
 ---
