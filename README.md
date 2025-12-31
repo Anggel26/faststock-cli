@@ -21,7 +21,7 @@ Este repositorio es un "proyecto vivo". Actualmente, acabamos de implementar la 
     * **Historial de Ventas:** Registro detallado de cada movimiento y venta.
     * **Reportes Temporales:** Generación de reportes de ventas por mes, semana o día.
     * **Análisis de Ganancias:** Cálculo de márgenes y beneficios en periodos determinados.
-    * **Exportación de Datos:** Capacidad de exportar reportes a CSV o JSON.
+    * **Exportación de Datos:** Capacidad de exportar reportes a archivos de texto.
 
 ---
 
