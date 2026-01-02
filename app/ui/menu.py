@@ -1,8 +1,10 @@
 from app.utils.validators import input_int, input_float
+from app.ui.reporting_menu import ReportingMenu
 
 class ConsoleMenu:
     def __init__(self, service):
         self.service = service
+        self.reporting_menu = ReportingMenu(service)
 
     def mostrar_menu(self):
         print("\nMenú principal:")
@@ -11,17 +13,38 @@ class ConsoleMenu:
         print("3. Actualizar stock")
         print("4. Simular venta")
         print("5. Reporte de stock bajo")
-        print("6. Salir")
+        print("6. Reportes y Análisis")
+        print("7. Actualizar Costo (NUEVO)")
+        print("0. Salir")
 
     def registrar_producto(self):
         print("\nRegistro de producto.")
         while True:
             nombre = input("Nombre del producto: ").strip()
-            precio = input_float("Precio: ", minimo=0)
+            if not nombre:
+                print("El nombre no puede estar vacío.")
+                continue
+            if ";" in nombre:
+                print("El nombre no puede contener punto y coma (;).")
+                continue
+                
+            precio = input_float("Precio de Venta (al público): ", minimo=0)
+            costo = input_float("Costo de Compra (lo que te costó a ti): ", minimo=0)
+            
+            if costo > precio:
+                print(f"⚠️  ADVERTENCIA: Estás vendiendo a pérdida. (Margen: ${precio - costo:.2f})")
+                confirm = input("¿Estás seguro de registrar este precio? (s/n): ").lower()
+                if confirm != 's':
+                    continue
+            
             cantidad = input_int("Cantidad inicial: ", minimo=0)
 
-            self.service.agregar_producto(nombre, precio, cantidad)
-            print(f"{nombre} añadido al inventario.")
+            cant = self.service.agregar_producto(nombre, precio, cantidad, costo)
+            
+            if cant:
+                print(f"{nombre} añadido al inventario.")
+            else:
+                print(f"Error: El producto '{nombre}' ya existe.")
 
             if input("¿Desea registrar otro producto? (s/n): ").lower() != "s":
                 break
@@ -37,6 +60,7 @@ class ConsoleMenu:
             print(p)
 
     def actualizar_stock(self):
+        self.listar_inventario()
         nombre = input("Nombre del producto a actualizar (escribe 'salir' para volver): ")
         if nombre.lower() == 'salir':
             return
@@ -46,7 +70,8 @@ class ConsoleMenu:
             print("Producto no encontrado.")
             return
         
-        cantidad_sumar = input_int(f"Cantidad a sumar al stock de {producto.nombre}: ", minimo=0)
+        # Permitimos valores negativos para ajustar stock hacia abajo (pérdidas, correcciones)
+        cantidad_sumar = input_int(f"Cantidad a sumar (o restar con -) al stock de {producto.nombre}: ", minimo=None)
         updated_product = self.service.actualizar_stock(nombre, cantidad_sumar)
         
         if updated_product:
@@ -54,7 +79,29 @@ class ConsoleMenu:
         else:
             print("Error al actualizar el stock.")
 
+    def actualizar_costo(self):
+        self.listar_inventario()
+        nombre = input("Nombre del producto a actualizar (escribe 'salir' para volver): ")
+        if nombre.lower() == 'salir':
+            return
+
+        producto = self.service.buscar_por_nombre(nombre)
+        if not producto:
+            print("Producto no encontrado.")
+            return
+
+        print(f"Costo actual de {producto.nombre}: ${producto.costo:.2f}")
+        nuevo_costo = input_float(f"Nuevo costo: ", minimo=0)
+        
+        updated_product = self.service.actualizar_costo(nombre, nuevo_costo)
+        
+        if updated_product:
+            print(f"Costo actualizado correctamente.")
+        else:
+            print("Error al actualizar el costo.")
+
     def simular_venta(self):
+        self.listar_inventario()
         nombre = input("Producto que desea vender (escribe 'salir' para volver): ")
         if nombre.lower() == 'salir':
             return
@@ -110,6 +157,10 @@ class ConsoleMenu:
             elif opcion == "5":
                 self.reporte_stock_bajo()
             elif opcion == "6":
+                self.reporting_menu.mostrar_menu()
+            elif opcion == "7":
+                self.actualizar_costo()
+            elif opcion == "0":
                 print("Saliendo del sistema...")
                 break
             else:

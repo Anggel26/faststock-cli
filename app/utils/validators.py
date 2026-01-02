@@ -1,8 +1,12 @@
-def input_int(prompt, minimo=None):
+def input_int(prompt, minimo=None, opcional=False):
     # Función auxiliar para asegurar que recibimos un entero válido
     while True:
         try:
-            v = int(input(prompt))
+            valor_raw = input(prompt)
+            if opcional and valor_raw.strip() == "":
+                return None
+            
+            v = int(valor_raw)
             if minimo is not None and v < minimo:
                 print(f"Ingrese un número mayor o igual a {minimo}.")
                 continue

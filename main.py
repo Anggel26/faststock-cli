@@ -5,7 +5,7 @@ from app.ui.menu import ConsoleMenu
 
 def main():
     # Inicialización de dependencias
-    repository = InventoryRepository("inventario.txt")
+    repository = InventoryRepository("data/inventario.txt")
     service = InventoryService(repository)
     menu = ConsoleMenu(service)
     

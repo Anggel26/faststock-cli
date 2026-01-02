@@ -12,30 +12,28 @@ Este repositorio es un "proyecto vivo". Actualmente, acabamos de implementar la 
 * ✅ **Fase 1:** Implementación lógica básica y estructuras de datos.
 * ✅ **Fase 2:** Modularización, validación de entradas y manejo de errores.
 * ✅ **Fase 3:** **Programación Orientada a Objetos (POO).** Clases `Producto`, encapsulamiento y uso de `lambda`.
-* 🚀 **Fase 4 (Actual):** **Arquitectura en Capas y Persistencia.** Refactorización del código monolítico a una estructura escalable:
-    * **Modelos:** Definición de datos (`app/models`).
-    * **Repositorios:** Capa de acceso a datos y persistencia en archivo (`app/repositories`).
-    * **Servicios:** Lógica de negocio (`app/services`).
-    * **UI:** Interfaz de consola separada de la lógica (`app/ui`).
-* ⏳ **Fase 5 (Próximamente):** **Reportes Avanzados y Análisis de Datos.**
+* ✅ **Fase 4:** **Arquitectura en Capas y Persistencia.** Refactorización del código monolítico.
+* ✅ **Fase 5:** **Reportes Avanzados y Análisis de Datos.**
     * **Historial de Ventas:** Registro detallado de cada movimiento y venta.
     * **Reportes Temporales:** Generación de reportes de ventas por mes, semana o día.
-    * **Análisis de Ganancias:** Cálculo de márgenes y beneficios en periodos determinados.
-    * **Exportación de Datos:** Capacidad de exportar reportes a CSV o JSON.
+    * **Análisis de Ganancias:** Cálculo de márgenes reales (Precio Venta - Costo Compra).
+    * **Exportación de Datos:** Capacidad de exportar reportes a CSV.
 
 ---
 
-## ✨ Características Nuevas (Versión 3.0 - Layered Architecture)
-- 🏗️ **Diseño Modular:** Separación clara de responsabilidades lo que facilita el mantenimiento y escalabilidad.
-- 💾 **Persistencia Automática:** Los datos se guardan y cargan automáticamente al iniciar la aplicación.
-- 🛡️ **Validación Robusta:** Sistema centralizado de validación de entradas.
+## ✨ Características Nuevas (Versión 4.0 - Data Analysis & UX)
+- 📊 **Módulo de Reportes:** Visualiza tus ingresos, costos y ganancias netas por día o mes.
+- 💰 **Control de Costos:** Ahora puedes registrar el "Costo de Compra" de cada producto para saber cuánto estás ganando realmente.
+- 🛡️ **Validaciones Inteligentes:** El sistema previene nombres duplicados, alerta sobre ventas a pérdida y protege la integridad de los datos.
+- 📂 **Organización de Datos:** Todos los archivos de persistencia (`inventario.txt`, `ventas.txt`) ahora viven ordenadamente en la carpeta `data/`.
+- 🔄 **Gestión Flexible:** Ajusta tu stock hacia arriba o abajo y actualiza costos en cualquier momento.
 
 ---
 
 ## 🛠️ Tecnologías Utilizadas
-- **Lenguaje:** Python 3.x
-- **Arquitectura:** MVC / Layered (Models, Repositories, Services, UI)
-- **Persistencia:** File System (TXT/CSV based structures)
+- **Lenguaje:** Python 3.10+
+- **Arquitectura:** Layered Architecture (Models, Repositories, Services, UI)
+- **Persistencia:** File System (Structured TXT/CSV in `data/` directory)
 
 ---
 
@@ -66,3 +64,9 @@ python main.py
 # En macOS o Linux:
 python3 main.py
 ```
+
+---
+
+## 📢 Feedback
+
+¡Estoy aprendiendo y mejorando constantemente! Si tienes sugerencias, encuentras errores o quieres recomendar mejores prácticas, por favor abre un **Issue** o contáctame. ¡Cualquier feedback es bienvenido!
