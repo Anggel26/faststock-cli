@@ -7,7 +7,7 @@ Este proyecto surge para mejorar mis habilidades como desarrollador, transforman
 ---
 
 ## 📈 Evolución y Mejora Continua
-Este repositorio es un "proyecto vivo". Actualmente, acabamos de implementar la **Fase 4**, migrando a una **Arquitectura en Capas**.
+Este repositorio es un "proyecto vivo". Actualmente, acabamos de implementar la **Fase 5**, añadiendo **Análisis de datos**.
 
 * ✅ **Fase 1:** Implementación lógica básica y estructuras de datos.
 * ✅ **Fase 2:** Modularización, validación de entradas y manejo de errores.
